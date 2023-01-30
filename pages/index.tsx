@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { BibleType } from "../components/DropDown";
 import Footer from "../components/Footer";
@@ -11,14 +11,21 @@ import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
 import SquigglyLines from "../components/SquigglyLines";
 import Balancer from "react-wrap-balancer";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const [response, setResponse] = useState<Record<string, unknown> | null>(
+    null
+  );
   const [loading, setLoading] = useState(false);
   const [verse, setVerse] = useState("");
   const [bible, setBible] = useState<BibleType>(
     "Revised Standard Version Catholic Edition (RSVCE)"
   );
   const [generatedVerses, setGeneratedVerses] = useState<String>("");
+
+  const router = useRouter();
+  useEffect(() => {}, []);
 
   const prompt =
     bible === "Revised Standard Version Catholic Edition (RSVCE)"
@@ -52,10 +59,22 @@ const Home: NextPage = () => {
         prompt,
       }),
     });
-    // console.log("Edge function returned.");
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      setResponse({
+        status: response.status,
+        body: await response.text(),
+        headers: {
+          "X-Ratelimit-Limit": response.headers.get("X-Ratelimit-Limit"),
+          "X-Ratelimit-Remaining": response.headers.get(
+            "X-Ratelimit-Remaining"
+          ),
+          "X-Ratelimit-Reset": response.headers.get("X-Ratelimit-Reset"),
+        },
+      });
+      setLoading(false);
+      alert(`Rate limit reached, try again after one minute.`);
+      return;
     }
 
     const data = response.body;
@@ -157,7 +176,7 @@ const Home: NextPage = () => {
               onClick={(e) => generateVerse(e)}
               disabled={isDisabled()}
             >
-              Show Verses &rarr;
+              Find Bible Verses &rarr;
             </button>
           )}
           {loading && (
@@ -186,7 +205,16 @@ const Home: NextPage = () => {
                     </h2>
                     <p className="text-gray-500 text-sm mt-2">
                       <Balancer>
-                        Click verses to copy. You are limited to five (5) request per minute.
+                        Click the bible verse to copy. You are limited to five
+                        (5) request per minute.
+                        <br />
+                        If you are not seeing any verses or if the page keeps
+                        loading,
+                        <br />
+                        it is likely that you have exceeded this limit.
+                        <br />
+                        Please wait a few minutes and then refresh the page to
+                        try again.
                       </Balancer>
                     </p>
                   </div>
