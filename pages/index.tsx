@@ -132,16 +132,10 @@ const Home: NextPage = () => {
           </Balancer>
         </h1>
         <p className="mx-auto mt-12 max-w-xl text-base leading-7 text-slate-700">
-          {/* <Balancer>
-            Unlock the power of the Bible with BetterSelf, powered by Artificial
-            Intelligence (AI). Simply enter your request to receive relevant
-            verses and deepen your understanding. Experience the wisdom and
-            comfort of the Holy Scriptures like never before with a
-            user-friendly interface. Start your journey now and click "Find
-            Bible Verses."
-          </Balancer> */}
           <Balancer>
-            Unlock the power of the Bible with BetterSelf, powered by Artificial Intelligence (AI). Enter your request for personalized verses. Deepen understanding and gain insight effortlessly.
+            Unlock the power of the Bible with BetterSelf, powered by Artificial
+            Intelligence (AI). Enter your request for personalized verses.
+            Deepen understanding and gain insight effortlessly.
           </Balancer>
         </p>
         <div className="max-w-xl w-full">
