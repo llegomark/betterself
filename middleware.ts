@@ -17,16 +17,16 @@ export default async function middleware(
   const { success, pending, limit, reset, remaining } = await ratelimit.limit(
     `mw_${ip}`
   );
-  // event.waitUntil(pending);
+  event.waitUntil(pending);
 
-  const res = success
+  const response = success
     ? NextResponse.next()
     : NextResponse.redirect(new URL("/api/blocked", request.url), request);
 
-  res.headers.set("X-RateLimit-Limit", limit.toString());
-  res.headers.set("X-RateLimit-Remaining", remaining.toString());
-  res.headers.set("X-RateLimit-Reset", reset.toString());
-  return res;
+  response.headers.set("X-RateLimit-Limit", limit.toString());
+  response.headers.set("X-RateLimit-Remaining", remaining.toString());
+  response.headers.set("X-RateLimit-Reset", reset.toString());
+  return response;
 }
 
 export const config = {

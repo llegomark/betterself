@@ -29,19 +29,19 @@ const Home: NextPage = () => {
 
   const prompt =
     bible === "Revised Standard Version Catholic Edition (RSVCE)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the Revised Standard Version Catholic Edition (RSVCE). The user will provide a question, message or situation and you will respond with 2 relevant Bible verses clearly labeled "1." and "2.". Do not provide any additional context or interpretation. Source text: Revised Standard Version Catholic Edition (RSVCE). Context: ${verse}${
+      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the Revised Standard Version Catholic Edition (RSVCE). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: Revised Standard Version Catholic Edition (RSVCE). Context: ${verse}${
           verse.slice(-1) === "." ? "" : "."
         }`
       : bible === "New American Bible Revised Edition (NABRE)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New American Bible Revised Edition (NABRE). The user will provide a question, message or situation and you will respond with 2 relevant Bible verses clearly labeled "1." and "2.". Do not provide any additional context or interpretation. Source text: New American Bible Revised Edition (NABRE). Context: ${verse}${
+      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New American Bible Revised Edition (NABRE). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: New American Bible Revised Edition (NABRE). Context: ${verse}${
           verse.slice(-1) === "." ? "" : "."
         }`
       : bible === "New King James Version (NKJV)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New King James Version (NKJV). The user will provide a question, message or situation and you will respond with 2 relevant Bible verses clearly labeled "1." and "2.". Do not provide any additional context or interpretation. Source text: New King James Version (NKJV). Context: ${verse}${
+      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New King James Version (NKJV). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: New King James Version (NKJV). Context: ${verse}${
           verse.slice(-1) === "." ? "" : "."
         }`
       : bible === "New International Version (NIV)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New International Version (NIV). The user will provide a question, message or situation and you will respond with 2 relevant Bible verses clearly labeled "1." and "2.". Do not provide any additional context or interpretation. Source text: New International Version (NIV). Context: ${verse}${
+      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New International Version (NIV). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: New International Version (NIV). Context: ${verse}${
           verse.slice(-1) === "." ? "" : "."
         }`
       : "";
@@ -204,24 +204,13 @@ const Home: NextPage = () => {
                       <Balancer>Guidance from the Holy Scriptures</Balancer>
                     </h2>
                     <p className="text-gray-500 text-sm mt-2">
-                      <Balancer>
-                        Click the bible verse to copy. You are limited to five
-                        (5) request per minute.
-                        <br />
-                        If you are not seeing any verses or if the page keeps
-                        loading,
-                        <br />
-                        it is likely that you have exceeded this limit.
-                        <br />
-                        Please wait a few minutes and then refresh the page to
-                        try again.
-                      </Balancer>
+                      <Balancer>Click the Bible Verse to Copy It</Balancer>
                     </p>
                   </div>
                   <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
                     {generatedVerses
                       .substring(generatedVerses.indexOf("1") + 3)
-                      .split("2.")
+                      .split(/[1-3]\./)
                       .map((generatedVerse) => {
                         return (
                           <div
