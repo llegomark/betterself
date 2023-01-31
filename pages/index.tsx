@@ -131,6 +131,19 @@ const Home: NextPage = () => {
             </span>{" "}
           </Balancer>
         </h1>
+        <p className="mx-auto mt-12 max-w-xl text-base leading-7 text-slate-700">
+          {/* <Balancer>
+            Unlock the power of the Bible with BetterSelf, powered by Artificial
+            Intelligence (AI). Simply enter your request to receive relevant
+            verses and deepen your understanding. Experience the wisdom and
+            comfort of the Holy Scriptures like never before with a
+            user-friendly interface. Start your journey now and click "Find
+            Bible Verses."
+          </Balancer> */}
+          <Balancer>
+            Unlock the power of the Bible with BetterSelf, powered by Artificial Intelligence (AI). Enter your request for personalized verses. Deepen understanding and gain insight effortlessly.
+          </Balancer>
+        </p>
         <div className="max-w-xl w-full">
           <div className="flex mt-10 items-center space-x-3">
             <Image
@@ -140,7 +153,7 @@ const Home: NextPage = () => {
               alt="1 icon"
               className="mb-5 sm:mb-0"
             />
-            <p className="text-left font-medium">
+            <p className="text-left text-base">
               <Balancer>
                 Type any inquiries, expressions, emotions, or circumstances you
                 would like to understand better.
@@ -159,7 +172,7 @@ const Home: NextPage = () => {
           />
           <div className="flex mb-5 items-center space-x-3">
             <Image src="/2-black.png" width={30} height={30} alt="1 icon" />
-            <p className="text-left font-medium">
+            <p className="text-left text-base">
               <Balancer>Select a Bible Translation</Balancer>
             </p>
           </div>
@@ -172,7 +185,7 @@ const Home: NextPage = () => {
 
           {!loading && (
             <button
-              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              className="bg-black rounded-xl text-white text-base px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
               onClick={(e) => generateVerse(e)}
               disabled={isDisabled()}
             >
@@ -181,7 +194,7 @@ const Home: NextPage = () => {
           )}
           {loading && (
             <button
-              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              className="bg-black rounded-xl text-white text-base px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
               disabled
             >
               <LoadingDots color="white" style="large" />
@@ -229,6 +242,17 @@ const Home: NextPage = () => {
                           </div>
                         );
                       })}
+                    <p className="text-gray-500 text-xs mt-2">
+                      <Balancer>
+                        Keep in mind that interpreting the Bible and
+                        understanding its teachings is a complex task that
+                        should ideally be done with the guidance of a trained
+                        religious leader or theologian. The Artificial
+                        Intelligence (AI) is not 100% accurate. You should
+                        exercise your own judgement and take actions according
+                        to your own judgement and beliefs.
+                      </Balancer>
+                    </p>
                   </div>
                 </>
               )}
