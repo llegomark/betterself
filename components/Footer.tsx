@@ -16,7 +16,6 @@ export default function Footer() {
         >
           Mark Anthony Llego
         </Link>
-        .
       </div>
       <div className="flex space-x-3 sm:space-x-4">
         <Link

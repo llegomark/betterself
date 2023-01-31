@@ -24,11 +24,11 @@ class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://bible.betterself.app/betterself.png"
+            content="https://bible.betterself.app/betterself-featured.png"
           />
           <meta
             name="twitter:image"
-            content="https://bible.betterself.app/betterself.png"
+            content="https://bible.betterself.app/betterself-featured.png"
           />
         </Head>
         <body>
