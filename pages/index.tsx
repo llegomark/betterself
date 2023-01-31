@@ -121,8 +121,8 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-15">
-        <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900">
+      <main className="sm:mt-15 mt-12 flex w-full flex-1 flex-col items-center justify-center px-4 text-center">
+        <h2 className="mx-auto max-w-4xl text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
           <Balancer>
             Discover Wisdom and Comfort in the{" "}
             <span className="relative whitespace-nowrap text-[#3290EE]">
@@ -130,12 +130,13 @@ const Home: NextPage = () => {
               <span className="relative">Word of God</span>
             </span>{" "}
           </Balancer>
-        </h1>
-        <p className="mx-auto mt-12 max-w-xl text-base leading-7 text-slate-700">
+        </h2>
+        <p className="mx-auto mt-12 max-w-xl text-lg leading-7 text-slate-900">
           <Balancer>
-            Unlock the power of the Bible with BetterSelf, powered by Artificial
-            Intelligence (AI). Enter your request for personalized verses.
-            Deepen understanding and gain insight effortlessly.
+            Unlock the power of the Bible with BetterSelf, powered by{" "}
+            <span className="font-bold">Artificial Intelligence (AI)</span>.
+            Enter your request for personalized verses. Deepen understanding and
+            gain insight effortlessly.
           </Balancer>
         </p>
         <div className="max-w-xl w-full">
@@ -148,10 +149,8 @@ const Home: NextPage = () => {
               className="mb-5 sm:mb-0"
             />
             <p className="text-left text-base">
-              <Balancer>
-                Type any inquiries, expressions, emotions, or circumstances you
-                would like to understand better.
-              </Balancer>
+              Type any inquiries, expressions, emotions, or circumstances you
+              would like to understand better.
             </p>
           </div>
           <textarea
@@ -166,9 +165,7 @@ const Home: NextPage = () => {
           />
           <div className="flex mb-5 items-center space-x-3">
             <Image src="/2-black.png" width={30} height={30} alt="1 icon" />
-            <p className="text-left text-base">
-              <Balancer>Select a Bible Translation</Balancer>
-            </p>
+            <p className="text-left text-base">Select a Bible Translation</p>
           </div>
           <div className="block">
             <DropDown
@@ -210,9 +207,6 @@ const Home: NextPage = () => {
                     <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto">
                       <Balancer>Guidance from the Holy Scriptures</Balancer>
                     </h2>
-                    <p className="text-gray-500 text-sm mt-2">
-                      <Balancer>Click the Bible Verse to Copy It</Balancer>
-                    </p>
                   </div>
                   <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
                     {generatedVerses
@@ -236,15 +230,11 @@ const Home: NextPage = () => {
                           </div>
                         );
                       })}
-                    <p className="text-gray-500 text-xs mt-2">
+                    <p className="text-gray-500 text-xs mt-2 text-justify">
                       <Balancer>
-                        Keep in mind that interpreting the Bible and
-                        understanding its teachings is a complex task that
-                        should ideally be done with the guidance of a trained
-                        religious leader or theologian. The Artificial
-                        Intelligence (AI) is not 100% accurate. You should
-                        exercise your own judgement and take actions according
-                        to your own judgement and beliefs.
+                        Click verse to copy, interpretation requires guidance
+                        from a religious leader or theologian. AI is not 100%
+                        accurate, use own judgement and beliefs.
                       </Balancer>
                     </p>
                   </div>
