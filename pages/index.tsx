@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   useEffect(() => {}, []);
 
-  const prompt = `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the ${bible}. The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Clearly Label: ${bible}. Context: ${verse}${
+  const prompt = `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the ${bible}. The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Add this label: ${bible}. Context: ${verse}${
     verse.slice(-1) === "." ? "" : "."
   }`;
 
@@ -116,14 +116,14 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
-      <main className="sm:mt-15 mt-12 flex w-full flex-1 flex-col items-center justify-center px-4 text-center">
+      <main className="sm:mt-15 mt-12 flex flex-1 flex-col items-center justify-center px-4 text-center">
         <h2 className="mx-auto max-w-4xl text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
           <Balancer>
             Discover Wisdom and Comfort in the{" "}
             <span className="relative whitespace-nowrap text-[#3290EE]">
               <SquigglyLines />
               <span className="relative">Word of God</span>
-            </span>{" "}
+            </span>
           </Balancer>
         </h2>
         <p className="mx-auto mt-12 max-w-xl text-lg leading-7 text-slate-900">
@@ -134,7 +134,7 @@ const Home: NextPage = () => {
             gain insight effortlessly.
           </Balancer>
         </p>
-        <div className="max-w-xl w-full">
+        <div className="max-w-xl w-full px-6">
           <div className="flex mt-10 items-center space-x-3">
             <Image
               src="/1-black.png"
@@ -153,25 +153,24 @@ const Home: NextPage = () => {
             onChange={(e) => setVerse(e.target.value)}
             onInput={limitCharacters}
             rows={4}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
+            className="w-full mt-5 rounded-lg shadow-sm focus:outline-none focus:shadow-outline"
             placeholder={
               "I am going through a difficult situation, what does the Bible say about hope and strength?"
             }
           />
-          <div className="flex mb-5 items-center space-x-3">
+          <div className="flex mt-5 items-center space-x-3">
             <Image src="/2-black.png" width={30} height={30} alt="1 icon" />
             <p className="text-left text-base">Select a Bible Translation</p>
           </div>
-          <div className="block">
+          <div className="block mt-3">
             <DropDown
               bible={bible}
               setBible={(newBible) => setBible(newBible)}
             />
           </div>
-
           {!loading && (
             <button
-              className="bg-black rounded-xl text-white text-base px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              className="bg-black rounded-lg text-white text-base px-4 py-2 mt-10 hover:bg-black/80 w-full"
               onClick={(e) => generateVerse(e)}
               disabled={isDisabled()}
             >
@@ -180,7 +179,7 @@ const Home: NextPage = () => {
           )}
           {loading && (
             <button
-              className="bg-black rounded-xl text-white text-base px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              className="bg-black rounded-lg text-white text-base px-4 py-2 mt-10 hover:bg-black/80 w-full"
               disabled
             >
               <LoadingDots color="white" style="large" />
@@ -199,37 +198,44 @@ const Home: NextPage = () => {
               {generatedVerses && (
                 <>
                   <div>
-                    <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto">
-                      <Balancer>Guidance from the Holy Scriptures</Balancer>
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 mx-auto px-3">
+                      <Balancer>The Word of God on Your Matter</Balancer>
                     </h2>
                   </div>
-                  <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
+                  <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto px-3">
                     {generatedVerses
                       .substring(generatedVerses.indexOf("1") + 3)
                       .split(/[1-3]\./)
                       .map((generatedVerse) => {
+                        const trimmedVerse = generatedVerse.trim();
                         return (
                           <div
-                            className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                            className="bg-blue-100 rounded-xl shadow-md p-4 hover:bg-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-copy border"
                             onClick={() => {
-                              navigator.clipboard.writeText(generatedVerse);
+                              navigator.clipboard.writeText(
+                                `${trimmedVerse} (generated from bible.betterself.app)`
+                              );
                               toast("Word of God Copied to Clipboard", {
                                 icon: "✂️",
                               });
                             }}
-                            key={generatedVerse}
+                            key={trimmedVerse}
                           >
-                            <p>
-                              <Balancer>{generatedVerse}</Balancer>
+                            <p className="text-base leading-tight text-justify">
+                              <Balancer>{trimmedVerse}</Balancer>
                             </p>
                           </div>
                         );
                       })}
-                    <p className="text-gray-500 text-xs mt-2 text-justify">
+                    <p className="bg-yellow-200 p-3 text-justify text-yellow-800 font-light leading-tight rounded-lg text-xs mt-2">
                       <Balancer>
-                        Click verse to copy, interpretation requires guidance
-                        from a religious leader or theologian. AI is not 100%
-                        accurate, use own judgement and beliefs.
+                        Click verse to copy. The displayed scripture verse is
+                        for reference purposes only. Interpretation of the
+                        gospel truth contained within may require the guidance
+                        of a religious leader or theologian. The accuracy of
+                        AI-generated scripture is not guaranteed. Please use
+                        your own judgement and beliefs when considering the
+                        meaning and interpretation of the verse.
                       </Balancer>
                     </p>
                   </div>
