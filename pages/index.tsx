@@ -27,24 +27,19 @@ const Home: NextPage = () => {
   const router = useRouter();
   useEffect(() => {}, []);
 
-  const prompt =
-    bible === "Revised Standard Version Catholic Edition (RSVCE)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the Revised Standard Version Catholic Edition (RSVCE). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: Revised Standard Version Catholic Edition (RSVCE). Context: ${verse}${
-          verse.slice(-1) === "." ? "" : "."
-        }`
-      : bible === "New American Bible Revised Edition (NABRE)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New American Bible Revised Edition (NABRE). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: New American Bible Revised Edition (NABRE). Context: ${verse}${
-          verse.slice(-1) === "." ? "" : "."
-        }`
-      : bible === "New King James Version (NKJV)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New King James Version (NKJV). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: New King James Version (NKJV). Context: ${verse}${
-          verse.slice(-1) === "." ? "" : "."
-        }`
-      : bible === "New International Version (NIV)"
-      ? `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the New International Version (NIV). The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Source text: New International Version (NIV). Context: ${verse}${
-          verse.slice(-1) === "." ? "" : "."
-        }`
-      : "";
+  const prompt = `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the ${bible}. The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Clearly Label: ${bible}. Context: ${verse}${
+    verse.slice(-1) === "." ? "" : "."
+  }`;
+
+  switch (bible) {
+    case "Revised Standard Version Catholic Edition (RSVCE)":
+    case "New American Bible Revised Edition (NABRE)":
+    case "New King James Version (NKJV)":
+    case "New International Version (NIV)":
+      break;
+    default:
+      throw new Error("Invalid Bible Version");
+  }
 
   const generateVerse = async (e: any) => {
     e.preventDefault();
@@ -180,7 +175,7 @@ const Home: NextPage = () => {
               onClick={(e) => generateVerse(e)}
               disabled={isDisabled()}
             >
-              Find Bible Verses &rarr;
+              Search Related Verses &rarr;
             </button>
           )}
           {loading && (
