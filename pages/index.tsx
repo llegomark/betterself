@@ -9,7 +9,6 @@ import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
 import SquigglyLines from "../components/SquigglyLines";
-import Balancer from "react-wrap-balancer";
 import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
@@ -118,30 +117,24 @@ const Home: NextPage = () => {
       <Header />
       <main className="sm:mt-15 mt-12 flex flex-1 flex-col items-center justify-center px-4 text-center">
         <h2 className="mx-auto max-w-4xl text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
-          <Balancer>
-            Discover Wisdom and Comfort in the{" "}
-            <span className="relative whitespace-nowrap text-[#3290EE]">
-              <SquigglyLines />
-              <span className="relative">Word of God</span>
-            </span>
-          </Balancer>
+          Discover Wisdom and Comfort in the{" "}
+          <span className="relative whitespace-nowrap text-[#3290EE]">
+            <SquigglyLines />
+            <span className="relative">Word of God</span>
+          </span>
         </h2>
         <p className="mx-auto mt-12 max-w-xl text-lg leading-7 text-slate-900">
-          <Balancer>
-            Unlock the power of the Bible with BetterSelf, powered by{" "}
-            <span className="font-bold">Artificial Intelligence (AI)</span>.
-            Enter your request for personalized verses. Deepen understanding and
-            gain insight effortlessly.
-          </Balancer>
+          Unlock the power of the Bible with BetterSelf, powered by{" "}
+          <span className="font-bold">Artificial Intelligence (AI)</span>. Enter
+          your request for personalized verses. Deepen understanding and gain
+          insight effortlessly.
         </p>
         <div className="max-w-xl w-full px-6">
           <div className="flex mt-10 items-center space-x-3">
             <span className="text-white bg-black rounded-full w-8 h-8 text-center flex items-center justify-center">
               1
             </span>
-            <p className="ml-3 text-left text-base">
-              Type anything here.
-            </p>
+            <p className="ml-3 text-left text-base">Type anything here.</p>
           </div>
           <textarea
             value={verse}
@@ -202,7 +195,7 @@ const Home: NextPage = () => {
                 <>
                   <div>
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 mx-auto px-3">
-                      <Balancer> Related Verses </Balancer>
+                      Related Verses
                     </h2>
                   </div>
                   <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto px-3">
@@ -225,21 +218,19 @@ const Home: NextPage = () => {
                             key={trimmedVerse}
                           >
                             <p className="text-base leading-tight text-justify">
-                              <Balancer>{trimmedVerse}</Balancer>
+                              {trimmedVerse}
                             </p>
                           </div>
                         );
                       })}
                     <p className="bg-yellow-200 p-3 text-justify text-yellow-800 font-light leading-tight rounded-lg text-xs mt-2">
-                      <Balancer>
-                        Click verse to copy. The displayed scripture verse is
-                        for reference purposes only. Interpretation of the
-                        gospel truth contained within may require the guidance
-                        of a religious leader or theologian. The accuracy of
-                        AI-generated scripture is not guaranteed. Please use
-                        your own judgement and beliefs when considering the
-                        meaning and interpretation of the verse.
-                      </Balancer>
+                      Click verse to copy. The displayed scripture verse is for
+                      reference purposes only. Interpretation of the gospel
+                      truth contained within may require the guidance of a
+                      religious leader or theologian. The accuracy of
+                      AI-generated scripture is not guaranteed. Please use your
+                      own judgement and beliefs when considering the meaning and
+                      interpretation of the verse.
                     </p>
                   </div>
                 </>
