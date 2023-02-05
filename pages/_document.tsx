@@ -8,7 +8,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Discover Wisdom & Comfort in the Word of God with BetterSelf - the cutting-edge virtual Bible. Get relevant verses from your preferred Bible with a click. Start exploring now!"
+            content="Transform your life with the power of positive words through Betterself's Words of Affirmation website, powered by AI. Get personalized affirmations to boost confidence, strengthen relationships, and bring happiness and fulfillment. Choose from a range of categories and watch as AI creates a rich and thorough affirmation tailored to your needs. Start your self-improvement journey today."
           />
           <meta
             property="og:site_name"
@@ -16,7 +16,7 @@ class MyDocument extends Document {
           />
           <meta
             property="og:description"
-            content="Discover Wisdom & Comfort in the Word of God with BetterSelf - the cutting-edge virtual Bible. Get relevant verses from your preferred Bible with a click. Start exploring now!"
+            content="Transform your life with the power of positive words through Betterself's Words of Affirmation website, powered by AI. Get personalized affirmations to boost confidence, strengthen relationships, and bring happiness and fulfillment. Choose from a range of categories and watch as AI creates a rich and thorough affirmation tailored to your needs. Start your self-improvement journey today."
           />
           <meta
             property="og:title"
@@ -29,7 +29,7 @@ class MyDocument extends Document {
           />
           <meta
             name="twitter:description"
-            content="Discover Wisdom & Comfort in the Word of God with BetterSelf - the cutting-edge virtual Bible. Get relevant verses from your preferred Bible with a click. Start exploring now!"
+            content="Transform your life with the power of positive words through Betterself's Words of Affirmation website, powered by AI. Get personalized affirmations to boost confidence, strengthen relationships, and bring happiness and fulfillment. Choose from a range of categories and watch as AI creates a rich and thorough affirmation tailored to your needs. Start your self-improvement journey today."
           />
           <meta
             property="og:image"
