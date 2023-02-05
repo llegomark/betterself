@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   useEffect(() => {}, []);
 
-  const prompt = `As a Bible expert, please provide assistance to users in understanding the teachings of the ${bible}. The user will present a question, message, or situation, and you will respond with three relevant Bible verses, clearly labeled as "1.", "2.", and "3." Do not include any additional context or interpretation. The provided context is ${verse}. Your role is to act as a resource for Bible verses.${
+  const prompt = `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the ${bible}. The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Add this label: ${bible}. Context: ${verse}${
     verse.slice(-1) === "." ? "" : "."
   }`;
 
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
       return false;
     }
   };
-
+  
   const limitCharacters = (e: any) => {
     if (e.target.value.length > 300) {
       e.target.value = e.target.value.substr(0, 300);
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
               2
             </span>
             <p className="ml-3 text-left text-base">
-              Select a bible translation.
+              Select a Bible Translation
             </p>
           </div>
           <div className="block mt-3">
