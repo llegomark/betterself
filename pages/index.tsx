@@ -140,7 +140,7 @@ const Home: NextPage = () => {
               1
             </span>
             <p className="ml-3 text-left text-base">
-              Type anything you want to understand better.
+              Type anything here.
             </p>
           </div>
           <textarea
@@ -162,7 +162,7 @@ const Home: NextPage = () => {
               2
             </span>
             <p className="ml-3 text-left text-base">
-              Select a Bible Translation
+              Select a Bible translation.
             </p>
           </div>
           <div className="block mt-3">

@@ -3,21 +3,19 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="py-4 px-4 border-b border-gray-300">
-      <div className="flex items-center justify-between max-w-screen-xl mx-auto">
-        <Link href="/" className="flex items-center">
-          <Image
-            alt="betterself logo"
-            src="/betterself.svg"
-            className="h-10 w-10 object-cover"
-            width={36}
-            height={36}
-          />
-          <h1 className="ml-2 text-2xl font-bold text-gray-900">
-            betterself.app
-          </h1>
-        </Link>
-      </div>
+    <header className="mt-5 flex w-full items-center justify-between border-b-2 px-2 pb-7 sm:px-4">
+      <Link href="/" className="flex w-full justify-center sm:justify-start">
+        <Image
+          alt="betterself logo"
+          src="/betterself.svg"
+          className="h-10 w-10 object-cover"
+          width={36}
+          height={36}
+        />
+        <h1 className="ml-2 text-3xl font-bold tracking-tight sm:text-5xl">
+          betterself.app
+        </h1>
+      </Link>
     </header>
   );
 }
