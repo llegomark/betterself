@@ -42,3 +42,4 @@ next-env.d.ts
 # api
 /pages/api/generate.ts
 /utils/Bible.ts
+.vscode
