@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { BibleType } from "../components/DropDown";
@@ -27,7 +26,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   useEffect(() => {}, []);
 
-  const prompt = `Please act as a Bible and assist users in understanding and interpreting its teachings by providing relevant Bible verses from the ${bible}. The user will provide a question, message or situation and you will respond with 3 relevant Bible verses clearly labeled "1." and "2." and "3.". Do not provide any additional context or interpretation. Add this label: ${bible}. Context: ${verse}${
+  const prompt = `As a Bible expert, please provide assistance to users in understanding the teachings of the ${bible}. The user will present a question, message, or situation, and you will respond with three relevant Bible verses, clearly labeled as "1.", "2.", and "3." Do not include any additional context or interpretation. The provided context is ${verse}. Your role is to act as a resource for Bible verses.${
     verse.slice(-1) === "." ? "" : "."
   }`;
 
@@ -92,7 +91,8 @@ const Home: NextPage = () => {
   };
 
   const isDisabled = () => {
-    if (verse === "") {
+    const trimmedVerse = verse.trim();
+    if (trimmedVerse.length === 0) {
       return true;
     } else {
       return false;
@@ -136,31 +136,34 @@ const Home: NextPage = () => {
         </p>
         <div className="max-w-xl w-full px-6">
           <div className="flex mt-10 items-center space-x-3">
-            <Image
-              src="/1-black.png"
-              width={30}
-              height={30}
-              alt="1 icon"
-              className="mb-5 sm:mb-0"
-            />
-            <p className="text-left text-base">
-              Type any inquiries, expressions, emotions, or circumstances you
-              would like to understand better.
+            <span className="text-white bg-black rounded-full w-8 h-8 text-center flex items-center justify-center">
+              1
+            </span>
+            <p className="ml-3 text-left text-base">
+              Type anything you want to understand better.
             </p>
           </div>
           <textarea
             value={verse}
             onChange={(e) => setVerse(e.target.value)}
             onInput={limitCharacters}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !isDisabled()) {
+                e.preventDefault();
+                generateVerse(e);
+              }
+            }}
             rows={4}
             className="w-full mt-5 rounded-lg shadow-sm focus:outline-none focus:shadow-outline"
-            placeholder={
-              "I am going through a difficult situation, what does the Bible say about hope and strength?"
-            }
+            placeholder={"For example, 'I am feeling anxious about my future.'"}
           />
           <div className="flex mt-5 items-center space-x-3">
-            <Image src="/2-black.png" width={30} height={30} alt="1 icon" />
-            <p className="text-left text-base">Select a Bible Translation</p>
+            <span className="text-white bg-black rounded-full w-8 h-8 text-center flex items-center justify-center">
+              2
+            </span>
+            <p className="ml-3 text-left text-base">
+              Select a bible translation.
+            </p>
           </div>
           <div className="block mt-3">
             <DropDown
@@ -174,7 +177,7 @@ const Home: NextPage = () => {
               onClick={(e) => generateVerse(e)}
               disabled={isDisabled()}
             >
-              Search Related Verses &rarr;
+              Search Related Verses &darr;
             </button>
           )}
           {loading && (
@@ -199,7 +202,7 @@ const Home: NextPage = () => {
                 <>
                   <div>
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 mx-auto px-3">
-                      <Balancer>The Word of God on Your Matter</Balancer>
+                      <Balancer>Verses Related to Your Request</Balancer>
                     </h2>
                   </div>
                   <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto px-3">
@@ -213,7 +216,7 @@ const Home: NextPage = () => {
                             className="bg-blue-100 rounded-xl shadow-md p-4 hover:bg-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-copy border"
                             onClick={() => {
                               navigator.clipboard.writeText(
-                                `${trimmedVerse} (generated from bible.betterself.app)`
+                                `${trimmedVerse} (generated from https://bible.betterself.app/)`
                               );
                               toast("Word of God Copied to Clipboard", {
                                 icon: "✂️",
