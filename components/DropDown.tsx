@@ -7,7 +7,7 @@ import {
 import { Fragment } from "react";
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.join(" ");
 }
 
 export type BibleType =
@@ -58,7 +58,7 @@ export default function DropDown({ bible, setBible }: DropDownProps) {
           className="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           key={bible}
         >
-          <div className="">
+          <div className="overflow-y-scroll h-32">
             {bibles.map((bibleItem) => (
               <Menu.Item key={bibleItem}>
                 {({ active }) => (

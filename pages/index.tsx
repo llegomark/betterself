@@ -98,7 +98,7 @@ const Home: NextPage = () => {
       return false;
     }
   };
-  
+
   const limitCharacters = (e: any) => {
     if (e.target.value.length > 300) {
       e.target.value = e.target.value.substr(0, 300);
@@ -177,7 +177,7 @@ const Home: NextPage = () => {
               onClick={(e) => generateVerse(e)}
               disabled={isDisabled()}
             >
-              Search Related Verses &darr;
+              Search Related Verses &rarr;
             </button>
           )}
           {loading && (
@@ -202,7 +202,7 @@ const Home: NextPage = () => {
                 <>
                   <div>
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900 mx-auto px-3">
-                      <Balancer>Verses Related to Your Request</Balancer>
+                      <Balancer> Related Verses </Balancer>
                     </h2>
                   </div>
                   <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto px-3">
