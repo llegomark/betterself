@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
-import SquigglyLines from "../components/SquigglyLines";
+import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
@@ -116,18 +116,13 @@ const Home: NextPage = () => {
 
       <Header />
       <main className="sm:mt-15 mt-12 flex flex-1 flex-col items-center justify-center px-4 text-center">
-        <h2 className="mx-auto max-w-4xl text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
-          Discover Wisdom and Comfort in the{" "}
-          <span className="relative whitespace-nowrap text-[#3290EE]">
-            <SquigglyLines />
-            <span className="relative">Word of God</span>
-          </span>
+        <h2 className="mx-auto max-w-4xl text-5xl font-bold tracking-normal text-slate-900 sm:text-6xl md:text-7xl">
+          Discover Wisdom and Comfort in the Word of God
         </h2>
-        <p className="mx-auto mt-12 max-w-xl text-lg leading-7 text-slate-900">
-          Unlock the power of the Bible with BetterSelf, powered by{" "}
-          <span className="font-bold">Artificial Intelligence (AI)</span>. Enter
-          your request for personalized verses. Deepen understanding and gain
-          insight effortlessly.
+        <p className="mx-auto mt-12 max-w-xl text-lg leading-7 text-slate-900 sm:text-base lg:text-lg">
+          Unlock the power of the Bible with BetterSelf, powered by Artificial
+          Intelligence (AI). Enter your request for personalized verses. Deepen
+          understanding and gain insight effortlessly.
         </p>
         <div className="max-w-xl w-full px-6">
           <div className="flex mt-10 items-center space-x-3">
@@ -206,7 +201,7 @@ const Home: NextPage = () => {
                         const trimmedVerse = generatedVerse.trim();
                         return (
                           <div
-                            className="bg-blue-100 rounded-xl shadow-md p-4 hover:bg-gray-100 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-copy border"
+                            className="bg-sky-200 rounded-xl shadow-md p-4 hover:bg-sky-100 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-copy border"
                             onClick={() => {
                               navigator.clipboard.writeText(
                                 `${trimmedVerse} (generated from https://bible.betterself.app/)`
@@ -223,14 +218,17 @@ const Home: NextPage = () => {
                           </div>
                         );
                       })}
-                    <p className="bg-yellow-200 p-3 text-justify text-yellow-800 font-light leading-tight rounded-lg text-xs mt-2">
-                      Click verse to copy. The displayed scripture verse is for
-                      reference purposes only. Interpretation of the gospel
-                      truth contained within may require the guidance of a
-                      religious leader or theologian. The accuracy of
-                      AI-generated scripture is not guaranteed. Please use your
-                      own judgement and beliefs when considering the meaning and
-                      interpretation of the verse.
+                    <p className="flex bg-yellow-200 p-3 text-justify text-yellow-800 font-light leading-tight rounded-lg text-xs mt-2">
+                      <InformationCircleIcon className="h-20 w-20 mr-2" />
+                      <span>
+                        Click verse to copy. The displayed scripture verse is
+                        for reference purposes only. Interpretation of the
+                        gospel truth contained within may require the guidance
+                        of a religious leader or theologian. The accuracy of
+                        AI-generated scripture is not guaranteed. Please use
+                        your own judgement and beliefs when considering the
+                        meaning and interpretation of the verse.
+                      </span>
                     </p>
                   </div>
                 </>
