@@ -11,7 +11,7 @@ export default function Footer() {
       <div>
         Copyright © {currentYear()}{" "}
         <Link
-          href="/"
+          href="https://llego.dev/"
           className="font-bold underline-offset-2 transition hover:underline"
         >
           Mark Anthony Llego
