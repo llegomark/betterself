@@ -3,7 +3,7 @@ import "../styles/globals.css";
 import { Inter } from "@next/font/google";
 
 const inter = Inter({
-  weight: "400",
+  weight: "300",
   subsets: ["latin"],
 });
 
